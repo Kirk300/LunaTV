@@ -306,7 +306,7 @@ export async function getConfig(): Promise<AdminConfig> {
 
   // db 中无配置，执行一次初始化
   if (!adminConfig) {
-    adminConfig = await getInitConfig("");
+    adminConfig = await getInitConfig(process.env.CONFIG_FILE || "");
   }
   adminConfig = configSelfCheck(adminConfig);
   cachedConfig = adminConfig;
